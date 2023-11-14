@@ -2,29 +2,28 @@ package nz.chess;
 
 import java.io.IOException;
 
-import javafx.application.Application;  
+import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;  
-import javafx.stage.Stage;  
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import nz.chess.SceneManager.AppUi;
+
 public class ChessApp extends Application {
     private static Scene scene;
-    
+
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
-    public void start(Stage primaryStage) {
-        try {
-            setRoot("chess");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void start(final Stage stage) throws IOException {
 
-        primaryStage.setTitle("Chess");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        SceneManager.addUi(AppUi.STARTER_PAGE, loadFxml("chess"));
+
+        scene = new Scene(SceneManager.getUi(AppUi.STARTER_PAGE), 800, 800);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public static void setRoot(String fxml) throws IOException {
