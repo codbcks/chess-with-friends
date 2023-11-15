@@ -1,2 +1,4 @@
 # chess-with-friends
-My first personal group project
+Our first personal group project
+
+jre1.8
