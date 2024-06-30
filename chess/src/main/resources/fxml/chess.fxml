@@ -8,7 +8,7 @@
    <children>
       <ImageView fitHeight="800.0" fitWidth="800.0">
          <image>
-            <Image url="@../images/232.jpg" />
+            <Image url="@../images/chessboard.png" />
          </image>
       </ImageView>
    </children>
