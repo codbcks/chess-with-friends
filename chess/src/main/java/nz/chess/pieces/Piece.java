@@ -18,5 +18,7 @@ public abstract class Piece {
     public ImageView getImage() {
         return image;
     }
+
+    public abstract boolean isValidMove(int currentX, int currentY, int targetX, int targetY);
 }
 

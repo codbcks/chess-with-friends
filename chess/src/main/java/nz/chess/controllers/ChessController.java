@@ -17,6 +17,7 @@ public class ChessController {
     private AnchorPane boardPane;
 
     public static Square selectedSquare = null;
+    public static boolean isWhiteTurn = true;
 
     // White pieces
     @FXML private ImageView waPawn;
@@ -112,15 +113,23 @@ public class ChessController {
     public static void handleSquareClick(Square square) {
         // Select the square if it has a piece
         if (selectedSquare == null && square.getPiece() != null) {
-            selectedSquare = square;
-            square.highlight();
+            if (isWhiteTurn == square.getPiece().isWhite()) {
+                selectedSquare = square;
+                square.highlight();
+            }
 
         // Move the piece if a square is selected
         } else if (selectedSquare != null && selectedSquare != square) {
-            selectedSquare.getPiece().getImage().relocate(square.getLayoutX()+10, square.getLayoutY()+10);
-            selectedSquare.movePiece(square);
-            selectedSquare.unhighlight();
-            selectedSquare = null;
+            if (selectedSquare.getPiece().isValidMove(selectedSquare.getX(), selectedSquare.getY(), square.getX(), square.getY())) {
+                selectedSquare.getPiece().getImage().relocate(square.getLayoutX()+10, square.getLayoutY()+10);
+                selectedSquare.movePiece(square);
+                selectedSquare.unhighlight();
+                selectedSquare = null;
+                isWhiteTurn = !isWhiteTurn;
+            } else {
+                selectedSquare.unhighlight();
+                selectedSquare = null;
+            }
 
         // Unselect the square if it is clicked again
         } else if (selectedSquare != null && selectedSquare == square) {

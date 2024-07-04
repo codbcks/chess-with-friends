@@ -8,4 +8,8 @@ public class King extends Piece{
         super(isWhite, image);
     }
     
+    @Override
+    public boolean isValidMove(int currentX, int currentY, int targetX, int targetY) {
+        return true;
+    }
 }
