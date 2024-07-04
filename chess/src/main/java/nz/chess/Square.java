@@ -37,11 +37,6 @@ public class Square extends StackPane {
         return y;
     }
 
-    public void movePiece(Square targetSquare) {
-        targetSquare.setPiece(piece);
-        this.piece = null;
-    }
-
     // Set a border for the selected square
     public void highlight() {
         setStyle("-fx-border-color: red; -fx-border-width: 5px;");

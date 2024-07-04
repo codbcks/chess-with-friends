@@ -20,40 +20,12 @@ public class ChessController {
     public static boolean isWhiteTurn = true;
 
     // White pieces
-    @FXML private ImageView waPawn;
-    @FXML private ImageView wbPawn;
-    @FXML private ImageView wcPawn;
-    @FXML private ImageView wdPawn;
-    @FXML private ImageView wePawn;
-    @FXML private ImageView wfPawn;
-    @FXML private ImageView wgPawn;
-    @FXML private ImageView whPawn;
-    @FXML private ImageView waRook;
-    @FXML private ImageView whRook;
-    @FXML private ImageView wbKnight;
-    @FXML private ImageView wgKnight;
-    @FXML private ImageView wcBishop;
-    @FXML private ImageView wfBishop;
-    @FXML private ImageView wQueen;
-    @FXML private ImageView wKing;
+    @FXML private ImageView waPawn, wbPawn, wcPawn, wdPawn, wePawn, wfPawn, wgPawn, whPawn;
+    @FXML private ImageView waRook, whRook, wbKnight, wgKnight, wcBishop, wfBishop, wQueen, wKing;
 
     // Black pieces
-    @FXML private ImageView baPawn;
-    @FXML private ImageView bbPawn;
-    @FXML private ImageView bcPawn;
-    @FXML private ImageView bdPawn;
-    @FXML private ImageView bePawn;
-    @FXML private ImageView bfPawn;
-    @FXML private ImageView bgPawn;
-    @FXML private ImageView bhPawn;
-    @FXML private ImageView baRook;
-    @FXML private ImageView bhRook;
-    @FXML private ImageView bbKnight;
-    @FXML private ImageView bgKnight;
-    @FXML private ImageView bcBishop;
-    @FXML private ImageView bfBishop;
-    @FXML private ImageView bQueen;
-    @FXML private ImageView bKing;
+    @FXML private ImageView baPawn, bbPawn, bcPawn, bdPawn, bePawn, bfPawn, bgPawn, bhPawn;
+    @FXML private ImageView baRook, bhRook, bbKnight, bgKnight, bcBishop, bfBishop, bQueen, bKing;
 
     public void initialize() {
 
@@ -118,11 +90,10 @@ public class ChessController {
                 square.highlight();
             }
 
-        // Move the piece if a square is selected
+        // Move the piece if a square is already selected
         } else if (selectedSquare != null && selectedSquare != square) {
             if (selectedSquare.getPiece().isValidMove(selectedSquare.getX(), selectedSquare.getY(), square.getX(), square.getY())) {
-                selectedSquare.getPiece().getImage().relocate(square.getLayoutX()+10, square.getLayoutY()+10);
-                selectedSquare.movePiece(square);
+                movePiece(square);
                 selectedSquare.unhighlight();
                 selectedSquare = null;
                 isWhiteTurn = !isWhiteTurn;
@@ -142,6 +113,8 @@ public class ChessController {
         System.out.println("Selected square: " + selectedSquare);
     }
 
+
+    // Get the square at the given coordinates
     private Square getSquare(int x, int y) {
         for (javafx.scene.Node node : boardPane.getChildren()) {
             if (node instanceof Square) {
@@ -152,5 +125,17 @@ public class ChessController {
             }
         }
         return null;
+    }
+
+    public static void movePiece(Square targetSquare) {
+        // Remove the piece at target square if it exists
+        if (targetSquare.getPiece() != null) {
+            targetSquare.getPiece().getImage().setVisible(false);
+        }
+
+        // Move the selected piece to the target square
+        selectedSquare.getPiece().getImage().relocate(targetSquare.getLayoutX()+10, targetSquare.getLayoutY()+10);
+        targetSquare.setPiece(selectedSquare.getPiece());
+        selectedSquare.setPiece(null);
     }
 }
