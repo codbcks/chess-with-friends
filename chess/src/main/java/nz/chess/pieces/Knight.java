@@ -10,6 +10,6 @@ public class Knight extends Piece{
     
     @Override
     public boolean isValidMove(int currentX, int currentY, int targetX, int targetY) {
-        return true;
+        return (Math.abs(currentX - targetX) == 2 && Math.abs(currentY - targetY) == 1) || (Math.abs(currentX - targetX) == 1 && Math.abs(currentY - targetY) == 2);
     }
 }

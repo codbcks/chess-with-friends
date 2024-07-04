@@ -10,6 +10,6 @@ public class Rook extends Piece{
     
     @Override
     public boolean isValidMove(int currentX, int currentY, int targetX, int targetY) {
-        return true;
+        return currentX == targetX || currentY == targetY;
     }
 }

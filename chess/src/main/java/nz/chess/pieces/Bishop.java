@@ -10,6 +10,6 @@ public class Bishop extends Piece{
     
     @Override
     public boolean isValidMove(int currentX, int currentY, int targetX, int targetY) {
-        return true;
+        return Math.abs(currentX - targetX) == Math.abs(currentY - targetY);
     }
 }
