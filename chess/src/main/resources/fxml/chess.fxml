@@ -11,162 +11,162 @@
             <Image url="@../images/chessboard.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="10.0" layoutY="710.0">
+      <ImageView fx:id="waRook" fitHeight="80.0" fitWidth="80.0" layoutX="10.0" layoutY="710.0">
          <image>
             <Image url="@../images/white%20castle.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="410.0" layoutY="710.0">
+      <ImageView fx:id="wKing" fitHeight="80.0" fitWidth="80.0" layoutX="410.0" layoutY="710.0">
          <image>
             <Image url="@../images/white%20charles.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="210.0" layoutY="710.0">
+      <ImageView fx:id="wcBishop" fitHeight="80.0" fitWidth="80.0" layoutX="210.0" layoutY="710.0">
          <image>
             <Image url="@../images/white%20churchman.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="110.0" layoutY="710.0">
+      <ImageView fx:id="wbKnight" fitHeight="80.0" fitWidth="80.0" layoutX="110.0" layoutY="710.0">
          <image>
             <Image url="@../images/white%20horse.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="310.0" layoutY="710.0">
+      <ImageView fx:id="wQueen" fitHeight="80.0" fitWidth="80.0" layoutX="310.0" layoutY="710.0">
          <image>
             <Image url="@../images/white%20lizy.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="10.0" layoutY="610.0">
+      <ImageView fx:id="waPawn" fitHeight="80.0" fitWidth="80.0" layoutX="10.0" layoutY="610.0">
          <image>
             <Image url="@../images/white%20prawn.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="10.0" layoutY="10.0">
+      <ImageView fx:id="baRook" fitHeight="80.0" fitWidth="80.0" layoutX="10.0" layoutY="10.0">
          <image>
             <Image url="@../images/black%20castle.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="410.0" layoutY="10.0">
+      <ImageView fx:id="bKing" fitHeight="80.0" fitWidth="80.0" layoutX="410.0" layoutY="10.0">
          <image>
             <Image url="@../images/black%20charles.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="210.0" layoutY="10.0">
+      <ImageView fx:id="bcBishop" fitHeight="80.0" fitWidth="80.0" layoutX="210.0" layoutY="10.0">
          <image>
             <Image url="@../images/black%20churchman.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="110.0" layoutY="10.0">
+      <ImageView fx:id="bbKnight" fitHeight="80.0" fitWidth="80.0" layoutX="110.0" layoutY="10.0">
          <image>
             <Image url="@../images/black%20horse.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="310.0" layoutY="10.0">
+      <ImageView fx:id="bQueen" fitHeight="80.0" fitWidth="80.0" layoutX="310.0" layoutY="10.0">
          <image>
             <Image url="@../images/black%20lizy.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="10.0" layoutY="110.0">
+      <ImageView fx:id="baPawn" fitHeight="80.0" fitWidth="80.0" layoutX="10.0" layoutY="110.0">
          <image>
             <Image url="@../images/black%20prawn.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="110.0" layoutY="610.0">
+      <ImageView fx:id="wbPawn" fitHeight="80.0" fitWidth="80.0" layoutX="110.0" layoutY="610.0">
          <image>
             <Image url="@../images/white%20prawn.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="210.0" layoutY="610.0">
+      <ImageView fx:id="wcPawn" fitHeight="80.0" fitWidth="80.0" layoutX="210.0" layoutY="610.0">
          <image>
             <Image url="@../images/white%20prawn.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="310.0" layoutY="610.0">
+      <ImageView fx:id="wdPawn" fitHeight="80.0" fitWidth="80.0" layoutX="310.0" layoutY="610.0">
          <image>
             <Image url="@../images/white%20prawn.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="410.0" layoutY="610.0">
+      <ImageView fx:id="wePawn" fitHeight="80.0" fitWidth="80.0" layoutX="410.0" layoutY="610.0">
          <image>
             <Image url="@../images/white%20prawn.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="510.0" layoutY="610.0">
+      <ImageView fx:id="wfPawn" fitHeight="80.0" fitWidth="80.0" layoutX="510.0" layoutY="610.0">
          <image>
             <Image url="@../images/white%20prawn.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="610.0" layoutY="610.0">
+      <ImageView fx:id="wgPawn" fitHeight="80.0" fitWidth="80.0" layoutX="610.0" layoutY="610.0">
          <image>
             <Image url="@../images/white%20prawn.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="710.0" layoutY="610.0">
+      <ImageView fx:id="whPawn" fitHeight="80.0" fitWidth="80.0" layoutX="710.0" layoutY="610.0">
          <image>
             <Image url="@../images/white%20prawn.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="510.0" layoutY="710.0">
+      <ImageView fx:id="wfBishop" fitHeight="80.0" fitWidth="80.0" layoutX="510.0" layoutY="710.0">
          <image>
             <Image url="@../images/white%20churchman.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="610.0" layoutY="710.0">
+      <ImageView fx:id="wgKnight" fitHeight="80.0" fitWidth="80.0" layoutX="610.0" layoutY="710.0">
          <image>
             <Image url="@../images/white%20horse.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="710.0" layoutY="710.0">
+      <ImageView fx:id="whRook" fitHeight="80.0" fitWidth="80.0" layoutX="710.0" layoutY="710.0">
          <image>
             <Image url="@../images/white%20castle.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="710.0" layoutY="10.0">
+      <ImageView fx:id="bhRook" fitHeight="80.0" fitWidth="80.0" layoutX="710.0" layoutY="10.0">
          <image>
             <Image url="@../images/black%20castle.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="510.0" layoutY="10.0">
+      <ImageView fx:id="bfBishop" fitHeight="80.0" fitWidth="80.0" layoutX="510.0" layoutY="10.0">
          <image>
             <Image url="@../images/black%20churchman.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="610.0" layoutY="10.0">
+      <ImageView fx:id="bgKnight" fitHeight="80.0" fitWidth="80.0" layoutX="610.0" layoutY="10.0">
          <image>
             <Image url="@../images/black%20horse.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="110.0" layoutY="110.0">
+      <ImageView fx:id="bbPawn" fitHeight="80.0" fitWidth="80.0" layoutX="110.0" layoutY="110.0">
          <image>
             <Image url="@../images/black%20prawn.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="210.0" layoutY="110.0">
+      <ImageView fx:id="bcPawn" fitHeight="80.0" fitWidth="80.0" layoutX="210.0" layoutY="110.0">
          <image>
             <Image url="@../images/black%20prawn.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="310.0" layoutY="110.0">
+      <ImageView fx:id="bdPawn" fitHeight="80.0" fitWidth="80.0" layoutX="310.0" layoutY="110.0">
          <image>
             <Image url="@../images/black%20prawn.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="410.0" layoutY="110.0">
+      <ImageView fx:id="bePawn" fitHeight="80.0" fitWidth="80.0" layoutX="410.0" layoutY="110.0">
          <image>
             <Image url="@../images/black%20prawn.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="510.0" layoutY="110.0">
+      <ImageView fx:id="bfPawn" fitHeight="80.0" fitWidth="80.0" layoutX="510.0" layoutY="110.0">
          <image>
             <Image url="@../images/black%20prawn.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="610.0" layoutY="110.0">
+      <ImageView fx:id="bgPawn" fitHeight="80.0" fitWidth="80.0" layoutX="610.0" layoutY="110.0">
          <image>
             <Image url="@../images/black%20prawn.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="710.0" layoutY="110.0">
+      <ImageView fx:id="bhPawn" fitHeight="80.0" fitWidth="80.0" layoutX="710.0" layoutY="110.0">
          <image>
             <Image url="@../images/black%20prawn.png" />
          </image>

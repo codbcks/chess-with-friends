@@ -1,6 +1,8 @@
 package nz.chess.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import nz.chess.Square;
 import nz.chess.pieces.Bishop;
@@ -15,6 +17,43 @@ public class ChessController {
     @FXML
     private AnchorPane boardPane;
 
+    public static Square selectedSquare = null;
+
+    // White pieces
+    @FXML private ImageView waPawn;
+    @FXML private ImageView wbPawn;
+    @FXML private ImageView wcPawn;
+    @FXML private ImageView wdPawn;
+    @FXML private ImageView wePawn;
+    @FXML private ImageView wfPawn;
+    @FXML private ImageView wgPawn;
+    @FXML private ImageView whPawn;
+    @FXML private ImageView waRook;
+    @FXML private ImageView whRook;
+    @FXML private ImageView wbKnight;
+    @FXML private ImageView wgKnight;
+    @FXML private ImageView wcBishop;
+    @FXML private ImageView wfBishop;
+    @FXML private ImageView wQueen;
+    @FXML private ImageView wKing;
+
+    // Black pieces
+    @FXML private ImageView baPawn;
+    @FXML private ImageView bbPawn;
+    @FXML private ImageView bcPawn;
+    @FXML private ImageView bdPawn;
+    @FXML private ImageView bePawn;
+    @FXML private ImageView bfPawn;
+    @FXML private ImageView bgPawn;
+    @FXML private ImageView bhPawn;
+    @FXML private ImageView baRook;
+    @FXML private ImageView bhRook;
+    @FXML private ImageView bbKnight;
+    @FXML private ImageView bgKnight;
+    @FXML private ImageView bcBishop;
+    @FXML private ImageView bfBishop;
+    @FXML private ImageView bQueen;
+    @FXML private ImageView bKing;
 
     public void initialize() {
 
@@ -62,8 +101,6 @@ public class ChessController {
         // Set initial kings
         getSquare(4, 0).setPiece(new King());
         getSquare(4, 7).setPiece(new King());
-        
-        
     }
 
     private Square getSquare(int x, int y) {
@@ -76,5 +113,13 @@ public class ChessController {
             }
         }
         return null;
+    }
+
+    public static Square getSelectedSquare() {
+        return selectedSquare;
+    }
+
+    public static void setSelectedSquare(Square square) {
+        selectedSquare = square;
     }
 }
