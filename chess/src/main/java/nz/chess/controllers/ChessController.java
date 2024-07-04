@@ -1,7 +1,6 @@
 package nz.chess.controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import nz.chess.Square;
@@ -71,36 +70,67 @@ public class ChessController {
         }
 
         // Set the initial pieces
+
+        // White pawns
         for (int x = 0; x < 8; x++) {
-            getSquare(x, 1).setPiece(new Pawn()); // White pawns
-            getSquare(x, 6).setPiece(new Pawn()); // Black pawns
+            getSquare(x, 1).setPiece(new Pawn(true, (ImageView) boardPane.lookup("#w" + (char) (x + 97) + "Pawn")));
+        }
+
+        // Black pawns
+        for (int x = 0; x < 8; x++) {
+            getSquare(x, 6).setPiece(new Pawn(false, (ImageView) boardPane.lookup("#b" + (char) (x + 97) + "Pawn")));
         }
 
         // Set initial rooks
-        getSquare(0, 0).setPiece(new Rook());
-        getSquare(7, 0).setPiece(new Rook());
-        getSquare(0, 7).setPiece(new Rook());
-        getSquare(7, 7).setPiece(new Rook());
+        getSquare(0, 0).setPiece(new Rook(true, waRook));
+        getSquare(7, 0).setPiece(new Rook(true, whRook));
+        getSquare(0, 7).setPiece(new Rook(false, baRook));
+        getSquare(7, 7).setPiece(new Rook(false, bhRook));
 
         // Set initial knights
-        getSquare(1, 0).setPiece(new Knight());
-        getSquare(6, 0).setPiece(new Knight());
-        getSquare(1, 7).setPiece(new Knight());
-        getSquare(6, 7).setPiece(new Knight());
+        getSquare(1, 0).setPiece(new Knight(true, wbKnight));
+        getSquare(6, 0).setPiece(new Knight(true, wgKnight));
+        getSquare(1, 7).setPiece(new Knight(false, bbKnight));
+        getSquare(6, 7).setPiece(new Knight(false, bgKnight));
 
         // Set initial bishops
-        getSquare(2, 0).setPiece(new Bishop());
-        getSquare(5, 0).setPiece(new Bishop());
-        getSquare(2, 7).setPiece(new Bishop());
-        getSquare(5, 7).setPiece(new Bishop());
+        getSquare(2, 0).setPiece(new Bishop(true, wcBishop));
+        getSquare(5, 0).setPiece(new Bishop(true, wfBishop));
+        getSquare(2, 7).setPiece(new Bishop(false, bcBishop));
+        getSquare(5, 7).setPiece(new Bishop(false, bfBishop));
 
         // Set initial queens
-        getSquare(3, 0).setPiece(new Queen());
-        getSquare(3, 7).setPiece(new Queen());
+        getSquare(3, 0).setPiece(new Queen(true, wQueen));
+        getSquare(3, 7).setPiece(new Queen(false, bQueen));
 
         // Set initial kings
-        getSquare(4, 0).setPiece(new King());
-        getSquare(4, 7).setPiece(new King());
+        getSquare(4, 0).setPiece(new King(true, wKing));
+        getSquare(4, 7).setPiece(new King(false, bKing));
+    }
+
+    // What to do when a square is clicked
+    public static void handleSquareClick(Square square) {
+        // Select the square if it has a piece
+        if (selectedSquare == null && square.getPiece() != null) {
+            selectedSquare = square;
+            square.highlight();
+
+        // Move the piece if a square is selected
+        } else if (selectedSquare != null && selectedSquare != square) {
+            selectedSquare.getPiece().getImage().relocate(square.getLayoutX()+10, square.getLayoutY()+10);
+            selectedSquare.movePiece(square);
+            selectedSquare.unhighlight();
+            selectedSquare = null;
+
+        // Unselect the square if it is clicked again
+        } else if (selectedSquare != null && selectedSquare == square) {
+            selectedSquare.unhighlight();
+            selectedSquare = null;
+        }
+
+        System.out.println("Square clicked: " + square.getX() + ", " + square.getY());
+        System.out.println("Piece: " + square.getPiece());
+        System.out.println("Selected square: " + selectedSquare);
     }
 
     private Square getSquare(int x, int y) {
@@ -113,13 +143,5 @@ public class ChessController {
             }
         }
         return null;
-    }
-
-    public static Square getSelectedSquare() {
-        return selectedSquare;
-    }
-
-    public static void setSelectedSquare(Square square) {
-        selectedSquare = square;
     }
 }

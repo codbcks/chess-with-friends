@@ -18,29 +18,9 @@ public class Square extends StackPane {
 
     // Handle click event
     private void handleClick() {
-        // Select the square if it has a piece
-        if (ChessController.getSelectedSquare() == null && piece != null) {
-            ChessController.setSelectedSquare(this);
-            highlight();
-
-        // Move the piece if a square is selected
-        } else if (ChessController.getSelectedSquare() != null && ChessController.getSelectedSquare() != this) {
-            ChessController.getSelectedSquare().movePiece(this);
-            ChessController.getSelectedSquare().unhighlight();
-            ChessController.setSelectedSquare(null);
-
-        // Unselect the square if it is clicked again
-        } else if (ChessController.getSelectedSquare() != null && ChessController.getSelectedSquare() == this) {
-            ChessController.getSelectedSquare().unhighlight();
-            ChessController.setSelectedSquare(null);
-        }
-
-        System.out.println("Square clicked: " + x + ", " + y);
-        System.out.println("Piece: " + piece);
-        System.out.println("Selected square: " + ChessController.getSelectedSquare());
+        ChessController.handleSquareClick(this);
     }
 
-    // Update the display based on the piece
     public void setPiece(Piece piece) {
         this.piece = piece;
     }
