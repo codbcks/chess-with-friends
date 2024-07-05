@@ -11,6 +11,10 @@ public class King extends Piece{
     
     @Override
     public boolean isValidMove(int currentX, int currentY, int targetX, int targetY, Square[][] board) {
-        return Math.abs(currentX - targetX) <= 1 && Math.abs(currentY - targetY) <= 1;
+        if (Math.abs(currentX - targetX) <= 1 && Math.abs(currentY - targetY) <= 1) {
+            return board[targetX][targetY].getPiece() == null || board[targetX][targetY].getPiece().isWhite() != isWhite();
+        } else {
+            return false;
+        }
     }
 }
