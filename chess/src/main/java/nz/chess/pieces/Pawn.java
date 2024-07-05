@@ -1,6 +1,7 @@
 package nz.chess.pieces;
 
 import javafx.scene.image.ImageView;
+import nz.chess.Square;
 
 public class Pawn extends Piece{
 
@@ -9,19 +10,27 @@ public class Pawn extends Piece{
     }
     
     @Override
-    public boolean isValidMove(int currentX, int currentY, int targetX, int targetY) {
-        if (isWhite()) {
-            if (currentY == 1) {
-                return (targetY == 2 && currentX == targetX) || (targetY == 3 && currentX == targetX);
+    public boolean isValidMove(int currentX, int currentY, int targetX, int targetY, Square[][] board) {
+        // If the pawn is moving forward
+        if (targetX == currentX && board[targetX][targetY].getPiece() == null) {
+            if (isWhite()) {
+                if (currentY == 1) {
+                    return targetY == 2 || targetY == 3;
+                } else {
+                    return targetY == currentY + 1;
+                }
             } else {
-                return targetY == currentY + 1 && currentX == targetX;
+                if (currentY == 6) {
+                    return targetY == 5 || targetY == 4;
+                } else {
+                    return targetY == currentY - 1;
+                }
             }
+        
+        // If the pawn is moving diagonally
         } else {
-            if (currentY == 6) {
-                return (targetY == 5 && currentX == targetX) || (targetY == 4 && currentX == targetX);
-            } else {
-                return targetY == currentY - 1 && currentX == targetX;
-            }
+            return Math.abs(targetX - currentX) == 1 && Math.abs(targetY - currentY) == 1 &&
+            board[targetX][targetY].getPiece() != null && board[targetX][targetY].getPiece().isWhite() != isWhite();
         }
     }
 }

@@ -18,6 +18,7 @@ public class ChessController {
 
     public static Square selectedSquare = null;
     public static boolean isWhiteTurn = true;
+    private static Square[][] board = new Square[8][8];
 
     // White pieces
     @FXML private ImageView waPawn, wbPawn, wcPawn, wdPawn, wePawn, wfPawn, wgPawn, whPawn;
@@ -38,6 +39,7 @@ public class ChessController {
                 square.setLayoutX(x * squareSize);
                 square.setLayoutY((7 - y) * squareSize);
                 square.setPrefSize(squareSize, squareSize);
+                board[x][y] = square;
                 boardPane.getChildren().add(square);
             }
         }
@@ -92,7 +94,7 @@ public class ChessController {
 
         // Move the piece if a square is already selected
         } else if (selectedSquare != null && selectedSquare != square) {
-            if (selectedSquare.getPiece().isValidMove(selectedSquare.getX(), selectedSquare.getY(), square.getX(), square.getY())) {
+            if (selectedSquare.getPiece().isValidMove(selectedSquare.getX(), selectedSquare.getY(), square.getX(), square.getY(), board)) {
                 movePiece(square);
                 selectedSquare.unhighlight();
                 selectedSquare = null;

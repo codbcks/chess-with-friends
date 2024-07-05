@@ -1,6 +1,7 @@
 package nz.chess.pieces;
 
 import javafx.scene.image.ImageView;
+import nz.chess.Square;
 
 public class Knight extends Piece{
 
@@ -9,7 +10,7 @@ public class Knight extends Piece{
     }
     
     @Override
-    public boolean isValidMove(int currentX, int currentY, int targetX, int targetY) {
+    public boolean isValidMove(int currentX, int currentY, int targetX, int targetY, Square[][] board) {
         return (Math.abs(currentX - targetX) == 2 && Math.abs(currentY - targetY) == 1) || (Math.abs(currentX - targetX) == 1 && Math.abs(currentY - targetY) == 2);
     }
 }
