@@ -99,6 +99,11 @@ public class ChessController {
 
             // Check if the move is valid
             if (selectedSquare.getPiece().isValidMove(selectedSquare.getX(), selectedSquare.getY(), square.getX(), square.getY(), board)) {
+                
+                if (isInCheck(isWhiteTurn)) {
+                    System.out.println("Invalid move: King is in check");
+                    return;
+                }
                 movePiece(square);
                 selectedSquare.unhighlight();
                 selectedSquare = null;
@@ -127,6 +132,34 @@ public class ChessController {
         System.out.println("Selected square: " + selectedSquare);
     }
 
+    private static boolean isInCheck(boolean isWhite) {
+        Square kingSquare = findKing(isWhite);
+
+        // Check if any of the opponent's pieces can attack the king
+        for (Square[] row : board) {
+            for (Square square : row) {
+                if (square.getPiece() != null && square.getPiece().isWhite() != isWhite) {
+                    if (square.getPiece().isValidMove(square.getX(), square.getY(), kingSquare.getX(), kingSquare.getY(), board)) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    // Find the square for the king of given color
+    private static Square findKing(boolean isWhite) {
+        for (Square[] row : board) {
+            for (Square square : row) {
+                if (square.getPiece() instanceof King && square.getPiece().isWhite() == isWhite) {
+                    return square;
+                }
+            }
+        }
+        return null;
+    }
+
     // Get the square at the given coordinates
     private Square getSquare(int x, int y) {
         for (javafx.scene.Node node : boardPane.getChildren()) {
@@ -140,7 +173,7 @@ public class ChessController {
         return null;
     }
 
-    public static void movePiece(Square targetSquare) {
+    private static void movePiece(Square targetSquare) {
         
         // Remove the piece at target square if it exists
         if (targetSquare.getPiece() != null) {
