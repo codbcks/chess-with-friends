@@ -11,6 +11,7 @@ public class Pawn extends Piece{
     
     @Override
     public boolean isValidMove(int currentX, int currentY, int targetX, int targetY, Square[][] board) {
+        
         // If the pawn is moving forward
         if (targetX == currentX && board[targetX][targetY].getPiece() == null) {
             if (isWhite()) {

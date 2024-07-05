@@ -17,6 +17,7 @@ public class ChessController {
     private AnchorPane boardPane;
 
     public static Square selectedSquare = null;
+    public static Square[] lastMove = new Square[2];
     public static boolean isWhiteTurn = true;
     private static Square[][] board = new Square[8][8];
 
@@ -85,6 +86,7 @@ public class ChessController {
 
     // What to do when a square is clicked
     public static void handleSquareClick(Square square) {
+
         // Select the square if it has a piece
         if (selectedSquare == null && square.getPiece() != null) {
             if (isWhiteTurn == square.getPiece().isWhite()) {
@@ -92,13 +94,23 @@ public class ChessController {
                 square.highlight();
             }
 
-        // Move the piece if a square is already selected
+        // If a square is already selected
         } else if (selectedSquare != null && selectedSquare != square) {
+
+            // Check if the move is valid
             if (selectedSquare.getPiece().isValidMove(selectedSquare.getX(), selectedSquare.getY(), square.getX(), square.getY(), board)) {
                 movePiece(square);
                 selectedSquare.unhighlight();
                 selectedSquare = null;
                 isWhiteTurn = !isWhiteTurn;
+
+            // Select the new square if it has a piece of the same color
+            } else if (square.getPiece() != null && square.getPiece().isWhite() == selectedSquare.getPiece().isWhite()) {
+                selectedSquare.unhighlight();
+                selectedSquare = square;
+                square.highlight();
+
+            // Unselect the square if the move is invalid
             } else {
                 selectedSquare.unhighlight();
                 selectedSquare = null;
@@ -115,7 +127,6 @@ public class ChessController {
         System.out.println("Selected square: " + selectedSquare);
     }
 
-
     // Get the square at the given coordinates
     private Square getSquare(int x, int y) {
         for (javafx.scene.Node node : boardPane.getChildren()) {
@@ -130,6 +141,7 @@ public class ChessController {
     }
 
     public static void movePiece(Square targetSquare) {
+        
         // Remove the piece at target square if it exists
         if (targetSquare.getPiece() != null) {
             targetSquare.getPiece().getImage().setVisible(false);
