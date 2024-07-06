@@ -10,7 +10,7 @@ public class Queen extends Piece{
     }
     
     @Override
-    public boolean isValidMove(int currentX, int currentY, int targetX, int targetY, Square[][] board) {
+    public boolean isValidMove(int currentX, int currentY, int targetX, int targetY, Square[][] board, Square[] lastMove) {
 
         // If moving like a rook
         if (currentX == targetX || currentY == targetY) {

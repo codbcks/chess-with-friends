@@ -21,6 +21,6 @@ public abstract class Piece {
     }
 
     // Abstract method to check if a move is valid
-    public abstract boolean isValidMove(int currentX, int currentY, int targetX, int targetY, Square[][] board);
+    public abstract boolean isValidMove(int currentX, int currentY, int targetX, int targetY, Square[][] board, Square[] lastMove);
 }
 

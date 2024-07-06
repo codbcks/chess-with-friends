@@ -17,7 +17,7 @@ public class ChessController {
     private AnchorPane boardPane;
 
     public static Square selectedSquare = null;
-    public static Square[] lastMove = new Square[2];
+    public static Square[] lastMove = new Square[2]; // [0] is the starting square, [1] is the target square
     public static boolean isWhiteTurn = true;
     private static Square[][] board = new Square[8][8];
 
@@ -98,13 +98,16 @@ public class ChessController {
         } else if (selectedSquare != null && selectedSquare != square) {
 
             // Check if the move is valid
-            if (selectedSquare.getPiece().isValidMove(selectedSquare.getX(), selectedSquare.getY(), square.getX(), square.getY(), board)) {
+            if (selectedSquare.getPiece().isValidMove(selectedSquare.getX(), selectedSquare.getY(), square.getX(), square.getY(),
+             board, lastMove)) {
                 
                 if (isInCheck(isWhiteTurn)) {
                     System.out.println("Invalid move: King is in check");
                     return;
                 }
                 movePiece(square);
+                lastMove[0] = selectedSquare;
+                lastMove[1] = square;
                 selectedSquare.unhighlight();
                 selectedSquare = null;
                 isWhiteTurn = !isWhiteTurn;
@@ -139,7 +142,8 @@ public class ChessController {
         for (Square[] row : board) {
             for (Square square : row) {
                 if (square.getPiece() != null && square.getPiece().isWhite() != isWhite) {
-                    if (square.getPiece().isValidMove(square.getX(), square.getY(), kingSquare.getX(), kingSquare.getY(), board)) {
+                    if (square.getPiece().isValidMove(square.getX(), square.getY(), kingSquare.getX(), kingSquare.getY(), board,
+                     lastMove)) {
                         return true;
                     }
                 }

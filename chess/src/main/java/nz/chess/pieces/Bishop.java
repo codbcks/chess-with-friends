@@ -10,9 +10,9 @@ public class Bishop extends Piece{
     }
     
     @Override
-    public boolean isValidMove(int currentX, int currentY, int targetX, int targetY, Square[][] board) {
+    public boolean isValidMove(int currentX, int currentY, int targetX, int targetY, Square[][] board, Square[] lastMove) {
         if (Math.abs(currentX - targetX) == Math.abs(currentY - targetY)) {
-            
+
             // Check if there are any blocking pieces
             int xDir = currentX < targetX ? 1 : -1;
             int yDir = currentY < targetY ? 1 : -1;

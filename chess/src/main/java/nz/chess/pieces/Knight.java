@@ -10,7 +10,7 @@ public class Knight extends Piece{
     }
     
     @Override
-    public boolean isValidMove(int currentX, int currentY, int targetX, int targetY, Square[][] board) {
+    public boolean isValidMove(int currentX, int currentY, int targetX, int targetY, Square[][] board, Square[] lastMove) {
 
         // Check if the target square is occupied by piece of the same color
         if (board[targetX][targetY].getPiece() != null && board[targetX][targetY].getPiece().isWhite() == isWhite()) {
