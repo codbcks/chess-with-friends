@@ -5,9 +5,11 @@ import nz.chess.Square;
 import nz.chess.controllers.ChessController.moveType;
 
 public class Rook extends Piece{
+    private boolean hasMoved;
 
     public Rook(boolean isWhite, ImageView image) {
         super(isWhite, image);
+        this.hasMoved = false;
     }
     
     @Override
@@ -33,5 +35,13 @@ public class Rook extends Piece{
             }
         }
         return moveType.INVALID;
+    }
+
+    public boolean hasMoved() {
+        return hasMoved;
+    }
+
+    public void setHasMoved(boolean hasMoved) {
+        this.hasMoved = hasMoved;
     }
 }

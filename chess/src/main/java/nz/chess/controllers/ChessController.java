@@ -8,6 +8,7 @@ import nz.chess.pieces.Bishop;
 import nz.chess.pieces.King;
 import nz.chess.pieces.Knight;
 import nz.chess.pieces.Pawn;
+import nz.chess.pieces.Piece;
 import nz.chess.pieces.Queen;
 import nz.chess.pieces.Rook;
 
@@ -104,6 +105,7 @@ public class ChessController {
             // Check if the move is valid
             if (selectedSquare.getPiece().isValidMove(selectedSquare.getX(), selectedSquare.getY(), square.getX(), square.getY(),
              board, lastMove) == moveType.NORMAL) {
+
                 movePiece(square);
                 lastMove[0] = selectedSquare;
                 lastMove[1] = square;
@@ -115,7 +117,12 @@ public class ChessController {
             } else if (selectedSquare.getPiece().isValidMove(selectedSquare.getX(), selectedSquare.getY(), square.getX(), square.getY(),
             board, lastMove) == moveType.CASTLE) {
 
-                // TODO castle or sumin
+                performCastle(selectedSquare, square);
+                lastMove[0] = selectedSquare;
+                lastMove[1] = square;
+                selectedSquare.unhighlight();
+                selectedSquare = null;
+                isWhiteTurn = !isWhiteTurn;
 
             // Check if the move is a en passant    
             } else if (selectedSquare.getPiece().isValidMove(selectedSquare.getX(), selectedSquare.getY(), square.getX(), square.getY(),
@@ -158,7 +165,7 @@ public class ChessController {
         System.out.println("Selected square: " + selectedSquare);
     }
 
-    private static boolean isInCheck(boolean isWhite) {
+    public static boolean isInCheck(boolean isWhite) {
         Square kingSquare = findKing(isWhite);
 
         // Check if any of the opponent's pieces can attack the king
@@ -173,6 +180,44 @@ public class ChessController {
             }
         }
         return false;
+    }
+
+    public static boolean isInCheckAfterMove(int currentX, int currentY, int targetX, int targetY, boolean isWhite) {
+        
+        // Move the piece
+        Square targetSquare = board[targetX][targetY];
+        Square currentSquare = board[currentX][currentY];
+        Piece currentPiece = currentSquare.getPiece();
+        targetSquare.setPiece(currentPiece);
+        currentSquare.setPiece(null);
+
+        // Check if the king is in check
+        boolean inCheck = isInCheck(isWhite);
+
+        // Move the piece back
+        currentSquare.setPiece(currentPiece);
+        targetSquare.setPiece(null);
+
+        return inCheck;
+    }
+
+    private static void performCastle(Square kingSquare, Square targetSquare) {
+        int rookX = (targetSquare.getX() == 2) ? 0 : 7;
+        int newRookX = (targetSquare.getX() == 2) ? 3 : 5;
+        int y = kingSquare.getY();
+
+        Square rookSquare = board[rookX][y];
+        Square newRookSquare = board[newRookX][y];
+
+        // Move the king
+        movePiece(targetSquare);
+        ((King) targetSquare.getPiece()).setHasMoved(true);
+
+        // Move the rook
+        rookSquare.getPiece().getImage().relocate(newRookSquare.getLayoutX() + 10, newRookSquare.getLayoutY() + 10);
+        newRookSquare.setPiece(rookSquare.getPiece());
+        rookSquare.setPiece(null);
+        ((Rook) newRookSquare.getPiece()).setHasMoved(true);
     }
 
     // Find the square for the king of given color
