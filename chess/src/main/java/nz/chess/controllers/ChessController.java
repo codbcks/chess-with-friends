@@ -124,11 +124,17 @@ public class ChessController {
                 selectedSquare = null;
                 isWhiteTurn = !isWhiteTurn;
 
-            // Check if the move is a castle    
+            // Check if the move is a en passant    
             } else if (selectedSquare.getPiece().isValidMove(selectedSquare.getX(), selectedSquare.getY(), square.getX(), square.getY(),
             board, lastMove) == moveType.EN_PASSANT) {
-
-                // TODO enpassant or sumin
+                movePiece(square);
+                lastMove[1].getPiece().getImage().setVisible(false);
+                lastMove[1].setPiece(null);
+                lastMove[0] = selectedSquare;
+                lastMove[1] = square;
+                selectedSquare.unhighlight();
+                selectedSquare = null;
+                isWhiteTurn = !isWhiteTurn;
 
             // Check if the move is a promotion
             } else if (selectedSquare.getPiece().isValidMove(selectedSquare.getX(), selectedSquare.getY(), square.getX(), square.getY(),
