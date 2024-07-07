@@ -2,6 +2,7 @@ package nz.chess.pieces;
 
 import javafx.scene.image.ImageView;
 import nz.chess.Square;
+import nz.chess.controllers.ChessController.moveType;
 
 public abstract class Piece {
     private boolean isWhite;
@@ -21,6 +22,6 @@ public abstract class Piece {
     }
 
     // Abstract method to check if a move is valid
-    public abstract boolean isValidMove(int currentX, int currentY, int targetX, int targetY, Square[][] board, Square[] lastMove);
+    public abstract moveType isValidMove(int currentX, int currentY, int targetX, int targetY, Square[][] board, Square[] lastMove);
 }
 

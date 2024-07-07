@@ -21,6 +21,10 @@ public class ChessController {
     public static boolean isWhiteTurn = true;
     private static Square[][] board = new Square[8][8];
 
+    public enum moveType {
+        NORMAL, CASTLE, EN_PASSANT, PROMOTION, INVALID
+    }
+
     // White pieces
     @FXML private ImageView waPawn, wbPawn, wcPawn, wdPawn, wePawn, wfPawn, wgPawn, whPawn;
     @FXML private ImageView waRook, whRook, wbKnight, wgKnight, wcBishop, wfBishop, wQueen, wKing;
@@ -99,18 +103,32 @@ public class ChessController {
 
             // Check if the move is valid
             if (selectedSquare.getPiece().isValidMove(selectedSquare.getX(), selectedSquare.getY(), square.getX(), square.getY(),
-             board, lastMove)) {
+             board, lastMove) == moveType.NORMAL) {
                 
-                if (isInCheck(isWhiteTurn)) {
-                    System.out.println("Invalid move: King is in check");
-                    return;
-                }
                 movePiece(square);
                 lastMove[0] = selectedSquare;
                 lastMove[1] = square;
                 selectedSquare.unhighlight();
                 selectedSquare = null;
                 isWhiteTurn = !isWhiteTurn;
+
+            // Check if the move is a castle
+            } else if (selectedSquare.getPiece().isValidMove(selectedSquare.getX(), selectedSquare.getY(), square.getX(), square.getY(),
+            board, lastMove) == moveType.CASTLE) {
+
+                // TODO castle or sumin
+
+            // Check if the move is a castle    
+            } else if (selectedSquare.getPiece().isValidMove(selectedSquare.getX(), selectedSquare.getY(), square.getX(), square.getY(),
+            board, lastMove) == moveType.EN_PASSANT) {
+
+                // TODO enpassant or sumin
+
+            // Check if the move is a promotion
+            } else if (selectedSquare.getPiece().isValidMove(selectedSquare.getX(), selectedSquare.getY(), square.getX(), square.getY(),
+            board, lastMove) == moveType.PROMOTION) {
+                
+                // TODO promotion or sumin
 
             // Select the new square if it has a piece of the same color
             } else if (square.getPiece() != null && square.getPiece().isWhite() == selectedSquare.getPiece().isWhite()) {
@@ -143,7 +161,7 @@ public class ChessController {
             for (Square square : row) {
                 if (square.getPiece() != null && square.getPiece().isWhite() != isWhite) {
                     if (square.getPiece().isValidMove(square.getX(), square.getY(), kingSquare.getX(), kingSquare.getY(), board,
-                     lastMove)) {
+                     lastMove) != moveType.INVALID) {
                         return true;
                     }
                 }

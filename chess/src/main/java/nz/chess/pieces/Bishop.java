@@ -2,6 +2,7 @@ package nz.chess.pieces;
 
 import javafx.scene.image.ImageView;
 import nz.chess.Square;
+import nz.chess.controllers.ChessController.moveType;
 
 public class Bishop extends Piece{
 
@@ -10,7 +11,7 @@ public class Bishop extends Piece{
     }
     
     @Override
-    public boolean isValidMove(int currentX, int currentY, int targetX, int targetY, Square[][] board, Square[] lastMove) {
+    public moveType isValidMove(int currentX, int currentY, int targetX, int targetY, Square[][] board, Square[] lastMove) {
         if (Math.abs(currentX - targetX) == Math.abs(currentY - targetY)) {
 
             // Check if there are any blocking pieces
@@ -18,12 +19,15 @@ public class Bishop extends Piece{
             int yDir = currentY < targetY ? 1 : -1;
             for (int i = 1; i < Math.abs(currentX - targetX); i++) {
                 if (board[currentX + i * xDir][currentY + i * yDir].getPiece() != null) {
-                    return false;
+                    return moveType.INVALID;
                 }
             }
-            return board[targetX][targetY].getPiece() == null || board[targetX][targetY].getPiece().isWhite() != isWhite();
-        } else {
-            return false;
+            if (board[targetX][targetY].getPiece() == null || board[targetX][targetY].getPiece().isWhite() != isWhite()) {
+                return moveType.NORMAL;
+            }
         }
+
+        return moveType.INVALID;
+
     }
 }
