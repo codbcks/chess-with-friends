@@ -104,7 +104,6 @@ public class ChessController {
             // Check if the move is valid
             if (selectedSquare.getPiece().isValidMove(selectedSquare.getX(), selectedSquare.getY(), square.getX(), square.getY(),
              board, lastMove) == moveType.NORMAL) {
-                
                 movePiece(square);
                 lastMove[0] = selectedSquare;
                 lastMove[1] = square;

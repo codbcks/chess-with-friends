@@ -17,8 +17,6 @@ public class King extends Piece{
                 return moveType.NORMAL;
             }
         }
-        
         return moveType.INVALID;
-   
     }
 }

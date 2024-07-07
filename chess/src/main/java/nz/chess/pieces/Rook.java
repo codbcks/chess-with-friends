@@ -32,7 +32,6 @@ public class Rook extends Piece{
                 return moveType.NORMAL;
             }
         }
-
         return moveType.INVALID;
     }
 }

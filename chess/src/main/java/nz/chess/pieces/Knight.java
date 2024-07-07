@@ -22,7 +22,6 @@ public class Knight extends Piece{
                 return moveType.NORMAL;
             }
         }
-
         return moveType.INVALID;
     }
 }

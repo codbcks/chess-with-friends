@@ -26,8 +26,6 @@ public class Bishop extends Piece{
                 return moveType.NORMAL;
             }
         }
-
         return moveType.INVALID;
-
     }
 }

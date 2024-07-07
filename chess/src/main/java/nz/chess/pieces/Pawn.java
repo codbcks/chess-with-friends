@@ -19,7 +19,7 @@ public class Pawn extends Piece{
                 if (currentY == 1) {
                     if (targetY == 2 || targetY == 3) {
                         return moveType.NORMAL;
-                    };
+                    }
                 } else {
                     if (targetY == currentY + 1) {
                         return moveType.NORMAL;
@@ -55,7 +55,6 @@ public class Pawn extends Piece{
                     }
                     else if (lastMove[0] == board[targetX][targetY-1] && lastMove[1] == board[targetX][targetY+1] && lastMove[1].getPiece() instanceof Pawn) {
                         return moveType.EN_PASSANT;
-                    
                     }
                 }
             }
